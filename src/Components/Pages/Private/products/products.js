@@ -20,11 +20,11 @@ export default class Login extends Component {
   constructor() {
     super();
     this.state = {
-      tipo:1,
-      error3:false,
-      total:0,
-      subtotal:0,
-      isv:0,
+      tipo: 1,
+      error3: false,
+      total: 0,
+      subtotal: 0,
+      isv: 0,
       things: [],
       things2: [],
       hasMore: true,
@@ -45,32 +45,21 @@ export default class Login extends Component {
     }
   }
 
-  onChangeHandler(e){
-    const {name, value} = e.target;
+  onChangeHandler(e) {
+    const { name, value } = e.target;
     //validar
-    this.setState({...this.state,[name]:value});
+    this.setState({ ...this.state, [name]: value });
     console.log(this.state.tipo)
   }
-  
-  printDocument=()=> {
-    this.setState({error3:true});
+
+  printDocument = () => {
+    this.setState({ error3: true });
     window.setTimeout(() => {
       this.printDocument2();
-   }, 1)
+    }, 1)
 
   }
-  printDocument2=()=>{
-    const input = document.getElementById('divToPrint');
-    html2canvas(input)
-      .then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, 'JPEG', 0, 0);
-        // pdf.output('dataurlnewwindow');
-        pdf.save("download.pdf");
-      })
-    ;
-    this.setState({error3:false});
+  printDocument2 = () => {
     fetch('http://localhost/TheCorsair/email.php', {
       method: 'post',
       header: {
@@ -87,8 +76,8 @@ export default class Login extends Component {
           this.addNotification3();
           window.setTimeout(() => {
             window.location.href = '/productos';
-         }, 2000)
-         
+          }, 2000)
+
         }
         else {
           alert(responseJson);
@@ -97,7 +86,7 @@ export default class Login extends Component {
       .catch((error) => {
         console.error(error);
       });
-    
+
   }
 
   addNotification3() {
@@ -113,7 +102,7 @@ export default class Login extends Component {
       dismissable: { click: true }
     });
   }
-  
+
 
   addNotification() {
     this.notificationDOMRef.current.addNotification({
@@ -128,7 +117,7 @@ export default class Login extends Component {
       dismissable: { click: true }
     });
   }
-  
+
   addNotification2() {
     this.notificationDOMRef.current.addNotification({
       title: "Notificacion",
@@ -201,7 +190,7 @@ export default class Login extends Component {
               things2: responseJson,
               loading: false
             },
-            
+
           )
           const { things2 } = this.state;
           var a = 0, b = 0, c = 0, d = 0;
@@ -235,7 +224,7 @@ export default class Login extends Component {
           'Content-type': 'application/json'
         },
         body: JSON.stringify({
-          tipo:this.state.tipo
+          tipo: this.state.tipo
         })
       })
         .then((response) => response.json())
@@ -260,7 +249,7 @@ export default class Login extends Component {
     window.location.href = '/';
   }
 
-  cancelar = ()=>{
+  cancelar = () => {
     fetch('http://localhost/TheCorsair/cancelarFac.php', {
       method: 'post',
       header: {
@@ -286,7 +275,23 @@ export default class Login extends Component {
       });
   }
 
-  cancelar1 = ()=>{
+  cancelar1 = () => {
+    fetch('http://localhost/TheCorsair/email.php', {
+      method: 'post',
+      header: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+      })
+
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     fetch('http://localhost/TheCorsair/cancelarFac.php', {
       method: 'post',
       header: {
@@ -301,6 +306,7 @@ export default class Login extends Component {
       .then((response) => response.json())
       .then((responseJson) => {
         if (responseJson === 'Data Matched') {
+          window.location.href = '/productos';
         }
         else {
           alert(responseJson);
@@ -353,82 +359,82 @@ export default class Login extends Component {
         </h1>
         <section className="mainn">
           <section className="overr421">
-          <legend className="legendario">Tipo</legend>
-          <select className="tipo2" name="tipo" value={this.state.tipo}
-           onChange={this.onChangeHandler}>
-            <option value="1">Calientes</option>
+            <legend className="legendario">Tipo</legend>
+            <select className="tipo2" name="tipo" value={this.state.tipo}
+              onChange={this.onChangeHandler}>
+              <option value="1">Calientes</option>
               <option value="2">FriaslFrozen</option>
               <option value="3">Extras</option>
               <option value="4">Turbulentas</option>
               <option value="5">Reposteria</option>
-          </select>
-          <section className="overr42">
-          {things.length <= 0
-              ? 'Cargando'
-              : things.map((dat) => (
-                <div className="thingItem" key={dat._id}>
-                  <img className="imagen" src={dat.imagen}></img>
-                  <div className="thingItem2" key={dat._id}>
-                    <ReactNotification ref={this.notificationDOMRef} />
-                    <div className="nombre">
-                      <span className="nombre2"> {dat.nomProd}</span>
-                      <IoIosAdd className="iconoadd2" onClick={this.register.bind(this, dat.codProd)} size="2em" />
-                    </div>
+            </select>
+            <section className="overr42">
+              {things.length <= 0
+                ? 'Cargando'
+                : things.map((dat) => (
+                  <div className="thingItem" key={dat._id}>
+                    <img className="imagen" src={dat.imagen}></img>
+                    <div className="thingItem2" key={dat._id}>
+                      <ReactNotification ref={this.notificationDOMRef} />
+                      <div className="nombre">
+                        <span className="nombre2"> {dat.nomProd}</span>
+                        <IoIosAdd className="iconoadd2" onClick={this.register.bind(this, dat.codProd)} size="2em" />
+                      </div>
 
-                  </div>
-                </div>
-              ))}
-          </section>
-           
-          </section>
-          <section  className="overr2">
-              <div className="thingItem_man2">
-              <div  className="spandetail22">
-                    <span className=""> Nombre</span>
                     </div>
-                <span>Cantidad</span>
-                <span>Precio</span>
-                <span></span>
-              </div>
-              {things2.length <= 0
-                ? 'Seleccione un producto para realizar su compra'
-                : things2.map((dat) => (
-                  <div className="thingItem_man" key={dat._id}>
-                    <div  className="spandetail">
-                    <span className=""> {dat.nomProd}</span>
-                    </div>
-                    <div  className="spandetail2">
-                    <span className=""> {dat.cant}</span>
-                    </div>
-                    <div  className="spandetail3">
-                    <span className=""> {dat.precioProd}</span>
-                    </div>
-                    <MdDelete onClick={this.delete.bind(this, dat.codProd)} size="2em" />
                   </div>
                 ))}
-              <div className="thingItem_man2">
-                <span> Sub Total:</span>
-                <span> {this.state.subtotal} </span>
-              </div>
+            </section>
 
-              <div className="thingItem_man2">
-                <span> ISV (15%):</span>
-                <span> {this.state.isv} </span>
+          </section>
+          <section className="overr2">
+            <div className="thingItem_man2">
+              <div className="spandetail22">
+                <span className=""> Nombre</span>
               </div>
+              <span>Cantidad</span>
+              <span>Precio</span>
+              <span></span>
+            </div>
+            {things2.length <= 0
+              ? 'Seleccione un producto para realizar su compra'
+              : things2.map((dat) => (
+                <div className="thingItem_man" key={dat._id}>
+                  <div className="spandetail">
+                    <span className=""> {dat.nomProd}</span>
+                  </div>
+                  <div className="spandetail2">
+                    <span className=""> {dat.cant}</span>
+                  </div>
+                  <div className="spandetail3">
+                    <span className=""> {dat.precioProd}</span>
+                  </div>
+                  <MdDelete onClick={this.delete.bind(this, dat.codProd)} size="2em" />
+                </div>
+              ))}
+            <div className="thingItem_man2">
+              <span> Sub Total:</span>
+              <span> {this.state.subtotal} </span>
+            </div>
 
-              <div className="thingItem_man3">
-                <span>Total a Pagar:</span>
-                <span> {this.state.total} </span>
-              </div>
-              <div className="imprimir">
-                <button onClick={this.cancelar} className="imprimir3">Cancelar</button>
-                <ReactToPrint
-          trigger={() => <a href="#"><button className="imprimir2">Imprimir</button></a>}
-          content={() => this.componentRef}
-          onAfterPrint={()=>this.cancelar()}
-        />
-              </div>
-              <ComponentToPrint ref={el => (this.componentRef = el)} />
+            <div className="thingItem_man2">
+              <span> ISV (15%):</span>
+              <span> {this.state.isv} </span>
+            </div>
+
+            <div className="thingItem_man3">
+              <span>Total a Pagar:</span>
+              <span> {this.state.total} </span>
+            </div>
+            <div className="imprimir">
+              <button onClick={this.cancelar} className="imprimir3">Cancelar</button>
+              <ReactToPrint
+                trigger={() => <a href="#"><button className="imprimir2">Imprimir</button></a>}
+                content={() => this.componentRef}
+                onAfterPrint={() => this.cancelar1()}
+              />
+            </div>
+            <ComponentToPrint ref={el => (this.componentRef = el)} />
           </section>
         </section>
       </section>
@@ -437,15 +443,16 @@ export default class Login extends Component {
 }
 
 class ComponentToPrint extends React.Component {
-  
+
   constructor() {
     super();
     this.state = {
-      tipo:1,
-      error3:false,
-      total:0,
-      subtotal:0,
-      isv:0,
+      fecha:0,
+      tipo: 1,
+      error3: false,
+      total: 0,
+      subtotal: 0,
+      isv: 0,
       things: [],
       things2: [],
       hasMore: true,
@@ -454,12 +461,9 @@ class ComponentToPrint extends React.Component {
       itemsToLoad: 10
     }
     this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.addNotification = this.addNotification.bind(this);
-    this.notificationDOMRef = React.createRef();
   }
 
   componentDidMount() {
-    this.getDataFromDb();
     this.getDataFromDb2();
     if (!this.state.intervalIsSet) {
       let interval = setInterval(this.getDataFromDb2, 500);
@@ -467,104 +471,12 @@ class ComponentToPrint extends React.Component {
     }
   }
 
-  onChangeHandler(e){
-    const {name, value} = e.target;
+  onChangeHandler(e) {
+    const { name, value } = e.target;
     //validar
-    this.setState({...this.state,[name]:value});
+    this.setState({ ...this.state, [name]: value });
     console.log(this.state.tipo)
   }
-  
-  printDocument=()=> {
-    this.setState({error3:true});
-    window.setTimeout(() => {
-      this.printDocument2();
-   }, 1)
-
-  }
-  printDocument2=()=>{
-    const input = document.getElementById('divToPrint');
-    html2canvas(input)
-      .then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, 'JPEG', 0, 0);
-        // pdf.output('dataurlnewwindow');
-        pdf.save("download.pdf");
-      })
-    ;
-    this.setState({error3:false});
-    fetch('http://localhost/TheCorsair/email.php', {
-      method: 'post',
-      header: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify({
-      })
-
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson === 'Data Matched') {
-          this.addNotification3();
-          window.setTimeout(() => {
-            window.location.href = '/productos';
-         }, 2000)
-         
-        }
-        else {
-          alert(responseJson);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    
-  }
-
-  addNotification3() {
-    this.notificationDOMRef.current.addNotification({
-      title: "Notificacion",
-      message: "Realizado!",
-      type: "success",
-      insert: "top",
-      container: "bottom-right",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "fadeOut"],
-      dismiss: { duration: 2000 },
-      dismissable: { click: true }
-    });
-  }
-  
-
-  addNotification() {
-    this.notificationDOMRef.current.addNotification({
-      title: "Notificacion",
-      message: "Producto Agregado!",
-      type: "success",
-      insert: "top",
-      container: "bottom-right",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "fadeOut"],
-      dismiss: { duration: 2000 },
-      dismissable: { click: true }
-    });
-  }
-  
-  addNotification2() {
-    this.notificationDOMRef.current.addNotification({
-      title: "Notificacion",
-      message: "Producto Eliminado!",
-      type: "success",
-      insert: "top",
-      container: "bottom-right",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "fadeOut"],
-      dismiss: { duration: 2000 },
-      dismissable: { click: true }
-    });
-  }
-
 
   componentWillUnmount() {
     if (this.state.intervalIsSet) {
@@ -573,36 +485,18 @@ class ComponentToPrint extends React.Component {
     }
   }
 
-
-  delete = (codProd) => {
-    fetch('http://localhost/TheCorsair/deleteCar.php', {
-      method: 'post',
-      header: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify({
-        // we will pass our input data to server
-        codProd: codProd,
-      })
-
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson === 'Data Matched') {
-          this.getDataFromDb2();
-
-        }
-        else {
-          alert(responseJson);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
   getDataFromDb2 = () => {
+    var date = new Date().getDate(); //Current Date
+    var month = new Date().getMonth() + 1; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    var hours = new Date().getHours(); //Current Hours
+    var min = new Date().getMinutes(); //Current Minutes
+    var sec = new Date().getSeconds(); //Current Seconds
+    this.setState({
+      //Setting the value of the date time
+      date:
+        date + '/' + month + '/' + year + ' ' + hours + ':' + min + ':' + sec,
+    });
     {
       fetch('http://localhost/TheCorsair/obtenerCar.php', {
         method: 'post',
@@ -623,7 +517,7 @@ class ComponentToPrint extends React.Component {
               things2: responseJson,
               loading: false
             },
-            
+
           )
           const { things2 } = this.state;
           var a = 0, b = 0, c = 0, d = 0;
@@ -647,98 +541,6 @@ class ComponentToPrint extends React.Component {
   };
 
 
-  getDataFromDb = () => {
-    {
-      const url = "http://localhost/TheCorsair/products.php";
-      fetch(url, {
-        method: 'post',
-        header: {
-          'Accept': 'application/json',
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          tipo:this.state.tipo
-        })
-      })
-        .then((response) => response.json())
-        .then((responseJson) => {
-          this.setState({
-            things: responseJson,
-            loading: false
-          },
-            function () {
-              this.arrayholder = responseJson;
-            }
-          )
-        })
-        .catch((error) => {
-          this.setState({ error, loading: false })
-          console.log(error);
-        });
-    }
-  };
-  logout(e) {
-    localStorage.clear();
-    window.location.href = '/';
-  }
-
-  cancelar = ()=>{
-    fetch('http://localhost/TheCorsair/cancelarFac.php', {
-      method: 'post',
-      header: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify({
-        // we will pass our input data to server
-      })
-
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson === 'Data Matched') {
-          window.location.href = '/productos';
-        }
-        else {
-          alert(responseJson);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-
-  register = (codProd) => {
-
-    fetch('http://localhost/TheCorsair/registerCar.php', {
-      method: 'post',
-      header: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify({
-        // we will pass our input data to server
-        codProd: codProd,
-      })
-
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        if (responseJson === 'Data Matched') {
-          this.getDataFromDb2();
-
-        }
-        else {
-          alert(responseJson);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-
   render() {
     const { things, things2 } = this.state;
     return (
@@ -746,52 +548,53 @@ class ComponentToPrint extends React.Component {
         width: '20mm',
         minHeight: '297mm',
       }}>
-<section className="overr2777">
-  <div>
-  <img className='logo777' src={logo}></img>
-  <div className="texto777">
-    <span>Frente a Banasupro, Calle principal de los negocios.
+        <section className="overr2777">
+          <div>
+            <img className='logo777' src={logo}></img>
+            <div className="texto777">
+              <span>Frente a Banasupro, Calle principal de los negocios.
     </span>
-    <span>Valle De Angeles, Francisco Morazan, Honduras</span>
-    <span>Tel: 8988-7614</span>
-  </div>
-  </div>
-    <div className="thingItem_man2777">
-    <div  className="spandetail22777">
-            <span className=""> Nombre</span>
+              <span>Valle De Angeles, Francisco Morazan, Honduras</span>
+              <span>Tel: 8988-7614</span>
+              <span>Fecha: {this.state.date}</span>
             </div>
-      <span>Cant</span>
-      <span style={{marginLeft:12}}>Precio</span>
-      <span></span>
-    </div>
-  {things2.length <= 0
-  ? ('Seleccione un producto para realizar su compra')
-  : things2.map((dat)=> (
-      <div className="thingItem_man777" key={dat._id}>
-        <div  className="spandetail777">
-            <span className=""> {dat.nomProd}</span>
+          </div>
+          <div className="thingItem_man2777">
+            <div className="spandetail22777">
+              <span className=""> Nombre</span>
             </div>
-        <span className=""> {dat.cant}</span>
-        <span className=""> {dat.precioProd}</span>
+            <span>Cant</span>
+            <span style={{ marginLeft: 12 }}>Precio</span>
+            <span></span>
+          </div>
+          {things2.length <= 0
+            ? ('Seleccione un producto para realizar su compra')
+            : things2.map((dat) => (
+              <div className="thingItem_man777" key={dat._id}>
+                <div className="spandetail777">
+                  <span className=""> {dat.nomProd}</span>
+                </div>
+                <span className=""> {dat.cant}</span>
+                <span className=""> {dat.precioProd}</span>
+              </div>
+            ))}
+          <div className="thingItem_man2777">
+            <span> Sub Total:</span>
+            <span> {this.state.subtotal} </span>
+          </div>
+
+          <div className="thingItem_man2777">
+            <span> ISV (15%):</span>
+            <span> {this.state.isv} </span>
+          </div>
+
+          <div className="thingItem_man3777">
+            <span>Total a Pagar:</span>
+            <span> {this.state.total} </span>
+          </div>
+
+        </section>
       </div>
-    ))}
-    <div className="thingItem_man2777">
-        <span> Sub Total:</span>
-        <span> {this.state.subtotal} </span>
-   </div>
-
-   <div className="thingItem_man2777">
-        <span> ISV (15%):</span>
-        <span> {this.state.isv} </span>
-   </div>
-
-   <div className="thingItem_man3777">
-        <span>Total a Pagar:</span>
-        <span> {this.state.total} </span>
-   </div>
-
-  </section>
-  </div>
     );
   }
 }
