@@ -1,0 +1,15 @@
+.logo{
+  margin-top: 30px;
+    width: 200px;
+    height: 210px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+.ed{
+  background-image: url("../../../../images/login.jpg");
+  min-height: 100vh;
+}

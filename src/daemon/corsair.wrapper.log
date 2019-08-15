@@ -1,0 +1,14 @@
+2019-08-14 00:33:04 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\Velasquez\AppData\Roaming\npm\node_modules\qckwinsvc\node_modules\node-windows\lib\wrapper.js --file "C:\Users\Velasquez\Documents\seminario\The Corsair\src\App.js" --log "corsair wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-08-14 00:33:04 - Started 1508
+2019-08-14 00:33:19 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\Velasquez\AppData\Roaming\npm\node_modules\qckwinsvc\node_modules\node-windows\lib\wrapper.js --file "C:\Users\Velasquez\Documents\seminario\The Corsair\src\App.js" --log "corsair wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-08-14 00:33:19 - Started 21488
+2019-08-14 00:35:45 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\Velasquez\AppData\Roaming\npm\node_modules\qckwinsvc\node_modules\node-windows\lib\wrapper.js --file "C:\Users\Velasquez\Documents\seminario\The Corsair\src\App.js" --log "corsair wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-08-14 00:35:45 - Started 22340
+2019-08-14 00:46:40 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\Velasquez\AppData\Roaming\npm\node_modules\qckwinsvc\node_modules\node-windows\lib\wrapper.js --file "C:\Users\Velasquez\Documents\seminario\The Corsair\src\App.js" --log "corsair wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-08-14 00:46:40 - Started 19032
+2019-08-14 00:46:57 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\Velasquez\AppData\Roaming\npm\node_modules\qckwinsvc\node_modules\node-windows\lib\wrapper.js --file "C:\Users\Velasquez\Documents\seminario\The Corsair\src\App.js" --log "corsair wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-08-14 00:46:57 - Started 3252
+2019-08-14 00:47:03 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\Velasquez\AppData\Roaming\npm\node_modules\qckwinsvc\node_modules\node-windows\lib\wrapper.js --file "C:\Users\Velasquez\Documents\seminario\The Corsair\src\App.js" --log "corsair wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-08-14 00:47:03 - Started 14920
+2019-08-14 01:27:11 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\Velasquez\AppData\Roaming\npm\node_modules\qckwinsvc\node_modules\node-windows\lib\wrapper.js --file "C:\Users\Velasquez\Documents\seminario\The Corsair\src\App.js" --log "corsair wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2019-08-14 01:27:11 - Started 6736

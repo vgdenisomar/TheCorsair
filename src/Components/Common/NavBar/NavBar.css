@@ -1,0 +1,58 @@
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #2E3D71;
+  color:#fff;
+}
+
+nav a{
+  box-sizing: border-box;
+  padding:0.5rem;
+  margin:0;
+  color:#fff;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  box-sizing: border-box;
+  max-width: 50%;
+  width:50%;
+}
+div a:hover{
+  background: rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+nav a:hover{
+  background: rgba(0, 0, 0, 0.1);
+  color: wheat;
+}
+
+.nav .nav-pills >li >a {
+  color: wheat;
+}
+ .nav .nav-pills > li > a:hover {
+   background-color: gold;
+   color: wheat;
+}
+.nav .nav-pills .active {
+ background-color: gold;
+ color:wheat ;
+ font-weight:bold;
+}
+
+.activeNav{
+  background: rgba(0, 0, 0, 0.2);
+  color: wheat;
+}
+
+.iconotamaño{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:white;
+}

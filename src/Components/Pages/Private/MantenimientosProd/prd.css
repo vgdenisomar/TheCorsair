@@ -1,0 +1,19 @@
+.overr234{
+    height: calc(100vh - 136px);
+    padding: 0px;
+    overflow: auto;
+    margin-top: -1rem;
+  }
+  
+
+  .cmb{
+      display: flex;
+      justify-content: center;
+  }
+
+  legend{
+      margin: 3px;
+  }
+  select{
+      margin:5px;
+  }
