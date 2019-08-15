@@ -286,6 +286,31 @@ export default class Login extends Component {
       });
   }
 
+  cancelar1 = ()=>{
+    fetch('http://localhost/TheCorsair/cancelarFac.php', {
+      method: 'post',
+      header: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        // we will pass our input data to server
+      })
+
+    })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        if (responseJson === 'Data Matched') {
+        }
+        else {
+          alert(responseJson);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
 
   register = (codProd) => {
 
@@ -398,8 +423,9 @@ export default class Login extends Component {
               <div className="imprimir">
                 <button onClick={this.cancelar} className="imprimir3">Cancelar</button>
                 <ReactToPrint
-          trigger={() => <a href="#"><button  className="imprimir2">Imprimir</button></a>}
+          trigger={() => <a href="#"><button className="imprimir2">Imprimir</button></a>}
           content={() => this.componentRef}
+          onAfterPrint={()=>this.cancelar()}
         />
               </div>
               <ComponentToPrint ref={el => (this.componentRef = el)} />

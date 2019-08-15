@@ -7,6 +7,7 @@ body {
   font-size: 16px;
   font-size: 100%;
   font-size: 1em;
+  overflow-x: hidden;
 }
 .container {
   display: flex;

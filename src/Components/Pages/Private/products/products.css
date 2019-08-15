@@ -40,16 +40,16 @@ div a{
   .thingItem {
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0.75em;
-    box-shadow: 1px 1px 3px 3px gray;
+    margin: 0.20em;
+    box-shadow: 1px 1px 1x 1px gray;
     box-sizing: 1px;
     background-color: #fff;
     padding: 1em;
     align-items: center;
     justify-content: space-between;
     float: left;
-    width: 150px;
-    height: 180px;
+    width: 100px;
+    height: 140px;
   }
 
   .thingItem:hover{
@@ -128,12 +128,12 @@ div a{
 }
 
 .imagen{
-  width: 150px;
-  height: 140px;
+  width: 100px;
+  height: 105px;
 }
 
 .iconoadd2:hover{
-  background-color:#c0e359;
+  background-color:#2E3D71;
   color: white;
 }
 
@@ -172,8 +172,8 @@ div a{
 }
 
 .nombre2{
-  margin-top: -20px;
-  font-size: 13px !important;
+  margin-top: -15px;
+  font-size: 11px !important;
   width: 55%;
   word-wrap: break-word;
 }

@@ -16,7 +16,7 @@ export default class PrdAdd extends Component{
     super();
     //definición del estado inicial
     this.state = {
-      tipo:0,
+      tipo:1,
       ex:'http://localhost/thecorsair/images/',
       nomProd:'',
       precioProd:'',
