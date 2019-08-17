@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../products/products1.css'
 import { Link } from 'react-router-dom';
-import { IoIosAdd, IoIosCart, IoIosSync, IoMdAddCircle, IoIosInformationCircleOutline} from 'react-icons/io';
+import { IoIosAdd, IoIosCart, IoMdAddCircle, IoIosInformationCircleOutline} from 'react-icons/io';
 import { paxios } from '../../../../Utilities';
 /*
   module.exports = class Login .....
