@@ -193,12 +193,15 @@ export default class Login extends Component {
 
           )
           const { things2 } = this.state;
-          var a = 0, b = 0, c = 0, d = 0;
+          var a = 0, b = 0, c = 0, d = 0, bb = 0, aa=0;
           things2.map((dat) => {
-            b = parseFloat(dat.precioProd) * parseFloat(dat.cant);
+            dat.precio=parseFloat(dat.precioProd)-parseFloat(dat.precioProd*0.15);
+            b = parseFloat(dat.precio) * parseFloat(dat.cant);
+            bb = parseFloat(dat.precioProd) * parseFloat(dat.cant);
             a += (b);
-            c = parseFloat(a * 0.15).toFixed(2);
-            d = (parseFloat(a) + parseFloat(c)).toFixed(2);
+            aa += (bb);
+            c = parseFloat(aa * 0.15).toFixed(2);
+            d += parseFloat(dat.precioProd*dat.cant);
             this.setState({
               subtotal: a,
               isv: c,
@@ -407,7 +410,7 @@ export default class Login extends Component {
                     <span className=""> {dat.cant}</span>
                   </div>
                   <div className="spandetail3">
-                    <span className=""> {dat.precioProd}</span>
+                    <span className=""> {dat.precio}</span>
                   </div>
                   <MdDelete onClick={this.delete.bind(this, dat.codProd)} size="2em" />
                 </div>
@@ -520,17 +523,21 @@ class ComponentToPrint extends React.Component {
 
           )
           const { things2 } = this.state;
-          var a = 0, b = 0, c = 0, d = 0;
+          var a = 0, b = 0, c = 0, d = 0, bb = 0, aa=0;
           things2.map((dat) => {
-            b = parseFloat(dat.precioProd) * parseFloat(dat.cant);
+            dat.precio=parseFloat(dat.precioProd)-parseFloat(dat.precioProd*0.15);
+            b = parseFloat(dat.precio) * parseFloat(dat.cant);
+            bb = parseFloat(dat.precioProd) * parseFloat(dat.cant);
             a += (b);
-            c = parseFloat(a * 0.15).toFixed(2);
-            d = (parseFloat(a) + parseFloat(c)).toFixed(2);
+            aa += (bb);
+            c = parseFloat(aa * 0.15).toFixed(2);
+            d += parseFloat(dat.precioProd*dat.cant);
             this.setState({
               subtotal: a,
               isv: c,
               total: d
             })
+            return dat;
           })
         })
         .catch((error) => {
@@ -575,7 +582,7 @@ class ComponentToPrint extends React.Component {
                   <span className=""> {dat.nomProd}</span>
                 </div>
                 <span className=""> {dat.cant}</span>
-                <span className=""> {dat.precioProd}</span>
+                <span className=""> {dat.precio}</span>
               </div>
             ))}
           <div className="thingItem_man2777">
