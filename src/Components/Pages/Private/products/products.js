@@ -370,6 +370,8 @@ export default class Login extends Component {
               <option value="3">Extras</option>
               <option value="4">Turbulentas</option>
               <option value="5">Reposteria</option>
+              <option value="6">Agua/Soda</option>
+              <option value="7">Artesanias</option>
             </select>
             <section className="overr42">
               {things.length <= 0
